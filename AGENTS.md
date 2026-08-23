@@ -25,6 +25,7 @@ Before making architectural or UI changes, agents MUST consult `SPEC.md`, specif
 - **Strictly shadcn/ui:** Do not build custom UI components (like dropdowns, modals, or buttons) from scratch if a shadcn/ui component already exists.
 - **Dialogs & Notifications:** NEVER use browser-native `alert()`, `confirm()`, or `prompt()`. All alerts must use the toast notification system. All confirmations must use the app's `AlertDialog` components.
 - **Tooltips Required:** All interactive icon-only elements must include descriptive tooltips/titles.
+- **No God Components:** React components MUST NOT exceed 400 lines of code. If a file approaches this limit, the agent MUST extract logic into custom hooks (`/src/hooks/`) or break the UI into smaller sub-components (`/src/components/`) before adding new features.
 
 ## 4. Cross-Agent Handoff & Session Logs
 - **Handoffs:** When concluding a session, summarize your work in a markdown file inside the `/docs/logs/agent_handoffs/` directory so the next agent can seamlessly pick up where you left off. Always check this folder for context if you are starting a new task.
