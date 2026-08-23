@@ -54,3 +54,5 @@ Do not guess where to find information or where to log your work. Use this direc
 
 ## 7. CI/CD & Deployments
 - **Supabase Auto-Deploy:** We use GitHub Actions for database migrations and edge functions. Agents must NEVER run `supabase db push` or `supabase functions deploy` manually from the terminal. Instead, commit your changes and push to `main` (or `master`); the `.github/workflows/supabase-deploy.yml` will handle the deployment automatically.
+- **Frontend Auto-Deploy:** We use Vercel for frontend hosting. Agents must NEVER run `vercel deploy` or `vercel build` from the CLI. Commit and push to `main`; Vercel will handle the deployment via GitHub integration.
+- **Infrastructure Migrations:** If the user requests to migrate away from Supabase or Vercel to a new provider (AWS, Azure, Oracle, etc.), the agent MUST STOP and ask the user for: 1. The Infrastructure as Code (IaC) preference (e.g., Terraform, Pulumi), 2. The target database architecture, and 3. The new CI/CD strategy. Do not write migration scripts until these are clarified.
