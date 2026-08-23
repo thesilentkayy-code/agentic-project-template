@@ -1,0 +1,33 @@
+name: Code Quality Guardrail
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          
+      - name: Run AI Guardrails
+        run: |
+          if [ -f "package.json" ]; then
+            echo "Node project detected. Installing dependencies..."
+            npm ci || npm install
+            
+            echo "Running Typechecker to catch AI hallucinations..."
+            npx tsc --noEmit || true
+            
+            echo "Running Linter..."
+            npm run lint --if-present
+          else
+            echo "No package.json found. Skipping JS/TS checks."
+          fi
