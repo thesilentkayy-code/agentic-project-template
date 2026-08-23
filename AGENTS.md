@@ -51,3 +51,6 @@ Do not guess where to find information or where to log your work. Use this direc
 ### Mimo Code Transcripts & Memory
 - **`/.mimocode/`**: All Mimo Code IDE generated transcripts, memory files, and plans reside here. If an agent requires historical transcripts or prior Mimo Code memory contexts (like `MEMORY-infrastructure.md`), they should consult `/.mimocode/memory/projects/` and `/.mimocode/memory/sessions/`. Do not move these files or it will reset the IDE's memory.
 - **`/docs/logs/mimo_backups/`**: If you manually backup a Mimo Code session or transcript, place it here to separate it from active IDE memory and agent handoffs.
+
+## 7. CI/CD & Deployments
+- **Supabase Auto-Deploy:** We use GitHub Actions for database migrations and edge functions. Agents must NEVER run `supabase db push` or `supabase functions deploy` manually from the terminal. Instead, commit your changes and push to `main` (or `master`); the `.github/workflows/supabase-deploy.yml` will handle the deployment automatically.
