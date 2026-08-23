@@ -1,0 +1,1 @@
+Please read `AGENTS.md` in the root of this repository. It serves as the unified Command Center for all rules and architectural constraints for this project. Do not make architectural decisions without consulting `AGENTS.md`, `SPEC.md`, and `DESIGN.md`.
